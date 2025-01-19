@@ -1,10 +1,11 @@
-import { Button } from "@/components/ui/button";
+import ProductList from "@/components/shared/product/product-list";
+import sampleData from "@/db/sample-data"
 
-const Homepage = () => {
+const Homepage = async () => {
+  console.log(sampleData.products)
+
   return (
-    <div>
-      <Button>Button</Button>
-    </div>
+    <ProductList data={sampleData.products} title='Newest Arrivals' limit={4} />
   );
 };
 
