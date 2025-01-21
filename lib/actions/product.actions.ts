@@ -11,3 +11,11 @@ export async function getLatestProducts() {
 
   return data;
 }
+
+
+//Get product
+export const getProductBySlug = async (slug: string) => {
+  return await prisma.product.findUnique({
+    where: { slug },
+  })
+};
