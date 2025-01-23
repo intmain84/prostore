@@ -1,6 +1,7 @@
 'use server';
 import { prisma } from '@/db/prisma';
 import { LATEST_PRODUCTS_LIMIT } from '@/lib/constants';
+import { Product } from '@/types';
 
 //Get latest products
 export async function getLatestProducts() {
@@ -12,10 +13,12 @@ export async function getLatestProducts() {
   return data;
 }
 
-
 //Get product
-export const getProductBySlug = async (slug: string) => {
-  return await prisma.product.findUnique({
+export const getProductBySlug = async (
+  slug: string,
+): Promise<Product | null> => {
+  const data = await prisma.product.findUnique({
     where: { slug },
-  })
+  });
+  return data;
 };
