@@ -22,6 +22,7 @@ export const config = {
       },
       async authorize(credentials) {
         if (credentials == null) return null;
+
         const user = await prisma.user.findFirst({
           where: { email: credentials.email as string },
         });
@@ -44,8 +45,8 @@ export const config = {
           }
 
           //If user does not exist or password does not match
-          return null;
         }
+        return null;
       },
     }),
   ],
